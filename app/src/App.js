@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react";
 import "./styles.css";
 
 const zoeluna = "audio/romantic-espanol/zoe-luna.mp3";
@@ -26,7 +25,7 @@ const TRACKS = [
   { id: 6, title: "Locos - Leon" }
 ];
 
-class App extends React.Component {
+class App extends Component {
   state = {
     selectedTrack: null,
     player: "stopped",
