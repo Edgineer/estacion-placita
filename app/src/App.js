@@ -158,6 +158,9 @@ class App extends Component {
       <>
         <title> First Station </title>
         <h1>Quarantine Vibes</h1>
+        <video width="640" height="640" autoplay="autoplay" loop id="videojs-overlay-player" class="video-js vjs-default-skin">
+          <source src="doggo.mov" type='video/mp4'/>
+        </video>
         <div className="player">
           <ul className="tracklist">{list}</ul>
           <TimeBar
