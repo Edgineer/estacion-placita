@@ -1,0 +1,70 @@
+h1 {
+    font-family: arial;
+    margin: 0;
+    padding-left: 20px;
+    line-height: 50px;
+  }
+  
+  .player {
+    float: center;
+    width: 400px;
+    font-family: arial;
+  }
+  
+  .tracklist {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .tracklist li {
+    background: salmon;
+    padding: 10px 20px;
+  }
+  
+  .tracklist li:hover {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .buttons {
+    float: left;
+    width: 100%;
+  }
+  
+  .buttons button {
+    float: left;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 0;
+    background: white;
+  }
+  
+  .buttons button:hover {
+    background: salmon;
+    font-weight: bold;
+  }
+  
+  .timebar {
+    float: left;
+    width: 100%;
+    height: 30px;
+    background: black;
+    color: white;
+  }
+  
+  .bar {
+    float: left;
+  }
+  
+  .time {
+    float: right;
+    text-align: center;
+    line-height: 30px;
+    width: 100px;
+  }
+  
