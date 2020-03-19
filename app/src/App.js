@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import "./styles.css";
+import Popup from "reactjs-popup";
 
-const zoeluna = "audio/romantic-espanol/zoe-luna.mp3";
-const zoeSone = "audio/romantic-espanol/zoe-sone.mp3";
-const leonLocos = "audio/romantic-espanol/leon-locos.mp3";
-const bbVete = "audio/romantic-espanol/bb-vete.mp3";
-const ctEres = "audio/romantic-espanol/cafe-tacuba-eres.mp3";
-const vfPrim = "audio/romantic-espanol/chente-primavera.mp3";
+const bbVete = "audio/bb-vete.mp3";
+const laCancion = "audio/la-cancion.mp3";
+const vfPrim = "audio/chente-primavera.mp3";
+const selAmor = "audio/selena-amor.mp3";
+const kcUp = "audio/kid-cudi-uuaa.mp3";
+const coleLOTS = "audio/jcole-lots.mp3";
+const chg3005 = "audio/chg-3005.mp3";
+const ctEres = "audio/cafe-tacuba-eres.mp3";
+const zoeluna = "audio/zoe-luna.mp3";
+const zoeSone = "audio/zoe-sone.mp3";
+const lenonImagine = "audio/jl-imagine.mp3";
+
 
 function getTime(time) {
   if (!isNaN(time)) {
@@ -18,21 +25,26 @@ function getTime(time) {
 
 const TRACKS = [
   { id: 1, title: "Veté - Bad Bunny"},
-  { id: 2, title: "Un Millon de Primaveras - Chente"},
-  { id: 3, title: "Eres - Cafe Tacuba"},
-  { id: 4, title: "Soñe - Zoé"},
-  { id: 5, title: "Luna - Zoé" },
-  { id: 6, title: "Locos - Leon" }
+  { id: 2, title: "La Canción - Bad Bunny, J Balvin"},
+  { id: 3, title: "Un Millon de Primaveras - Chente"},
+  { id: 4, title: "Amor Prohibido - Selena"},
+  { id: 5, title: "Up Up & Away - Kid Cudi"},
+  { id: 6, title: "Land of the Snakes - J. Cole"},
+  { id: 7, title: "3005 - Childish Gambino"},
+  { id: 8, title: "Eres - Cafe Tacuba"},
+  { id: 9, title: "Luna - Zoé" },
+  { id: 10, title: "Soñe - Zoé"},
+  { id: 11, title: "John Lenon - Imagine" }
 ];
 
-class App extends Component {
+class AudioPlayer extends Component{
   state = {
     selectedTrack: null,
     player: "stopped",
     currentTime: null,
     duration: null
   };
-
+  
   componentDidMount() {
     document.title = "1st Station"
     this.player.addEventListener("timeupdate", e => {
@@ -54,20 +66,35 @@ class App extends Component {
         case "Veté - Bad Bunny":
           track = bbVete;
           break;
+        case "La Canción - Bad Bunny, J Balvin":
+            track = laCancion;
+            break;
         case "Un Millon de Primaveras - Chente":
           track = vfPrim;
+          break;
+        case "Amor Prohibido - Selena":
+          track = selAmor;
+          break;
+        case "Up Up & Away - Kid Cudi":
+          track = kcUp;
+          break;
+        case "Land of the Snakes - J. Cole":
+            track = coleLOTS;
+            break;
+        case "3005 - Childish Gambino":
+          track = chg3005;
           break;
         case "Eres - Cafe Tacuba":
           track = ctEres;
           break;
-        case "Soñe - Zoé":
-          track = zoeSone;
-          break;
         case "Luna - Zoé":
           track = zoeluna;
           break;
-        case "Locos - Leon":
-          track = leonLocos;
+        case "Soñe - Zoé":
+          track = zoeSone;
+          break;
+        case "John Lenon - Imagine":
+          track = lenonImagine;
           break;
         default:
           break;
@@ -155,42 +182,80 @@ class App extends Component {
     const duration = getTime(this.state.duration);
 
     return (
+    <>
+      <div id="mainPlayer" className="player">
+        <ul className="tracklist">{list}</ul>
+        <TimeBar
+          setTime={this.setTime}
+          currentTime={this.state.currentTime}
+          duration={this.state.duration}
+        />
+        {this.state.player !== "stopped" && (
+          <div className="buttons">
+            <button onClick={() => this.handleSkip("previous")}>
+              Previous
+            </button>
+            {this.state.player === "paused" && (
+              <button onClick={() => this.setState({ player: "playing" })}>
+                Play
+              </button>
+            )}
+            {this.state.player === "playing" && (
+              <button onClick={() => this.setState({ player: "paused" })}>
+                Pause
+              </button>
+            )}
+            <button onClick={() => this.setState({ player: "stopped" })}>
+              Stop
+            </button>
+            <button onClick={() => this.handleSkip("next")}>Skip</button>
+          </div>
+        )}
+      </div>
+      <audio ref={ref => (this.player = ref)} />
+    </>
+    );
+  }
+}
+
+class App extends Component {
+  render() {
+
+    return (
       <>
         <title> First Station </title>
-        <h1>Quarantine Vibes</h1>
-        <video width="640" height="640" autoplay="autoplay" loop id="videojs-overlay-player" class="video-js vjs-default-skin">
-          <source src="doggo.mov" type='video/mp4'/>
-        </video>
-        <div className="player">
-          <ul className="tracklist">{list}</ul>
-          <TimeBar
-            setTime={this.setTime}
-            currentTime={this.state.currentTime}
-            duration={this.state.duration}
-          />
-          {this.state.player !== "stopped" && (
-            <div className="buttons">
-              <button onClick={() => this.handleSkip("previous")}>
-                Previous
-              </button>
-              {this.state.player === "paused" && (
-                <button onClick={() => this.setState({ player: "playing" })}>
-                  Play
-                </button>
+        <div class="flex-container">
+          <h1>Quarantine Vibes</h1>
+          <div>
+            <Popup trigger={<button class="button">About</button>} modal>
+              {close => (
+                <div className="modal">
+                  <a className="close" onClick={close}>
+                    &times;
+                  </a>
+                  <div className="header"> Welcome to Placita Radio! </div>
+                  <div className="content">
+                    {" "}
+                      Going to be spending alot more time indoors than anticipated due to COVID-19?
+                      Don't worry it took us all by suprise, but stay safe and while you figure out what to do
+                      I will by trying to develop this page into a fully operating internet radio station. Come 
+                      checkout the page often for updates.
+                    <br />
+                    Want to help Rayo escape the watermark and support the site? Please consider contributing $1 via venmo to
+                    @eloxacto along with a song request which I will add to the current list. Want to suggest a song without donating or have feedback to share? 
+                    Reach me through my twitter account @eloxacto. Thanks for visiting!
+                  </div>
+                </div>
               )}
-              {this.state.player === "playing" && (
-                <button onClick={() => this.setState({ player: "paused" })}>
-                  Pause
-                </button>
-              )}
-              <button onClick={() => this.setState({ player: "stopped" })}>
-                Stop
-              </button>
-              <button onClick={() => this.handleSkip("next")}>Skip</button>
-            </div>
-          )}
+            </Popup>
+          </div>
         </div>
-        <audio ref={ref => (this.player = ref)} />
+        <div class="flex-container">
+          <video width="520" height="520" autoplay="autoplay" loop id="videojs-overlay-player" class="video-js vjs-default-skin">
+            <source src="doggo.mov" type='video/mp4'/>
+          </video>
+          <AudioPlayer></AudioPlayer>
+        </div>
       </>
     );
   }

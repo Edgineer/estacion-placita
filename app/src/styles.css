@@ -1,10 +1,75 @@
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 h1 {
-    font-family: arial;
-    margin: 0;
-    padding-left: 20px;
-    line-height: 50px;
-  }
+  font-family: arial;
+  margin: 0;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 32px;
+  background: -webkit-linear-gradient(135deg, white,  salmon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.button {
+  background-color: black;
+  color: salmon;
+  border: 2px solid salmon;
+  transition-duration: 0.3s; 
+  border-radius: 35%;
+  padding: 10px;
+}
+.button:hover {
+  background-color: salmon;
+  color: black;
+}
   
+video {
+  float: center;
+  margin: 0;
+}
+
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
   .player {
     float: center;
     width: 400px;
