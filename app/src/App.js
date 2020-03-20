@@ -13,6 +13,7 @@ const ctEres = "audio/cafe-tacuba-eres.mp3";
 const zoeluna = "audio/zoe-luna.mp3";
 const zoeSone = "audio/zoe-sone.mp3";
 const lenonImagine = "audio/jl-imagine.mp3";
+const leonBrillas = "audio/leon-brillas.mp3";
 
 
 function getTime(time) {
@@ -34,7 +35,8 @@ const TRACKS = [
   { id: 8, title: "Eres - Cafe Tacuba"},
   { id: 9, title: "Luna - Zoé" },
   { id: 10, title: "Soñe - Zoé"},
-  { id: 11, title: "John Lenon - Imagine" }
+  { id: 11, title: "Imagine - John Lenon" },
+  { id: 12, title: "Brillas - León Larregui"}
 ];
 
 class AudioPlayer extends Component{
@@ -93,9 +95,12 @@ class AudioPlayer extends Component{
         case "Soñe - Zoé":
           track = zoeSone;
           break;
-        case "John Lenon - Imagine":
+        case "Imagine - John Lenon":
           track = lenonImagine;
           break;
+        case "Brillas - León Larregui":
+          track = leonBrillas;
+          break;  
         default:
           break;
       }
@@ -237,9 +242,9 @@ class App extends Component {
                   <div className="content">
                     {" "}
                       Going to be spending alot more time indoors than anticipated due to COVID-19?
-                      Don't worry it took us all by suprise, but stay safe and while you figure out what to do
+                      Don't worry it took us all by surprise, but stay safe and while you figure out what to do
                       I will by trying to develop this page into a fully operating internet radio station. Come 
-                      checkout the page often for updates.
+                      checkout the page often for updates y las mejores rolas.
                     <br />
                     Want to help Rayo escape the watermark and support the site? Please consider contributing $1 via venmo to
                     @eloxacto along with a song request which I will add to the current list. Want to suggest a song without donating or have feedback to share? 
@@ -251,7 +256,7 @@ class App extends Component {
           </div>
         </div>
         <div class="flex-container">
-          <video width="520" height="520" autoplay="autoplay" loop id="videojs-overlay-player" class="video-js vjs-default-skin">
+          <video width="520" height="520" autoplay="autoplay" muted loop id="videojs-overlay-player" class="video-js vjs-default-skin">
             <source src="doggo.mov" type='video/mp4'/>
           </video>
           <AudioPlayer></AudioPlayer>
