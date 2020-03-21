@@ -48,7 +48,6 @@ class AudioPlayer extends Component{
   };
   
   componentDidMount() {
-    document.title = "1st Station"
     this.player.addEventListener("timeupdate", e => {
       this.setState({
         currentTime: e.target.currentTime,
