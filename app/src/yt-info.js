@@ -1,7 +1,6 @@
 var fetchVideoInfo = require('youtube-info');
 
-var validUrl1 = 'ADdpLv3RDhA';
-var humble = "tvTRZJ-4EyI";
+var validUrl1 = 'ARt9HV9T0w8';
 
 function meetsReqs(videoInfo) {
   if (
@@ -15,7 +14,6 @@ function meetsReqs(videoInfo) {
     return true;
   else{ return false;}
 }
-
 
 fetchVideoInfo(validUrl1)
 .then(videoInfo => {
