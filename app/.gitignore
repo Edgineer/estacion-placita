@@ -11,9 +11,6 @@
 # production
 /build
 
-# ffmpeg
-/ffmpeg-20200315-c467328-win64-static
-
 # misc
 .DS_Store
 .env.local

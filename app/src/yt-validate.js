@@ -12,4 +12,3 @@ console.log(youtubeValidate.validateUrl(validUrl1)
     console.log("rejected :(" + err);
   })
 );
-
