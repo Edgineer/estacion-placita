@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {songEnded} from '../actions/index';
+import {getNextTrack} from '../actions/index';
 
 class Audio extends Component {
   render () {
     return (
       <audio
       src={`http://localhost:8080/get-mp3/${this.props.trackInfo.ytId}`}
-      autoPlay
+      autoPlay={true}
       controlsList='nodownload'
       controls={true}
-      onEnded={() => this.props.songEnded(this.props.trackInfo)}
+      onEnded={() => this.props.getNextTrack(this.props.trackInfo)}
       />
     )
   }
@@ -26,7 +26,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    songEnded: songEnded
+    getNextTrack: getNextTrack
   }, dispatch); 
 }
 

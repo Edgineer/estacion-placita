@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import Popup from "reactjs-popup";
 import "./styles.css";
 import Audio from './containers/audio';
+import Form from './containers/form';
 
 class App extends Component {
   render() {
     return (
       <>
-        <div class="flex-container">
+        <div className="flex-container">
           <h1>Quarantine Vibes</h1>
-          <Popup trigger={<button class="button">About</button>} modal>
+          <Popup trigger={<button className="button">About</button>} modal>
             {close => (
               <div className="modal">
                 <a className="close" onClick={close}>
@@ -31,10 +32,11 @@ class App extends Component {
             )}
           </Popup>
         </div>
-        <div class="flex-container">
-          <video width="520" height="520" autoplay="autoplay" muted loop id="videojs-overlay-player" class="video-js vjs-default-skin">
+        <div className="flex-container">
+          <video width="520" height="520" autoPlay="autoplay" muted loop id="videojs-overlay-player" className="video-js vjs-default-skin">
             <source src="doggo.mov" type='video/mp4'/>
           </video>
+          <Form />
         </div>
         <Audio />
       </>
