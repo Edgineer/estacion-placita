@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#secrets
+server/estacion-placita-firebase-adminsdk.json
+
 # production
 /build
 
